@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 public enum Skill
 {
     ExtraPoint,
@@ -46,16 +47,22 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
     void Start()
     {
-        player1Score = 0;
-        player2Score = 0;
-        targetScore = 10;
-        txtPlayer1Score.text =  player1Score.ToString();
-        txtPlayer2Score.text =  player2Score.ToString();
-        Time.timeScale = 0;
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            player1Score = 0;
+            player2Score = 0;
+            targetScore = 10;
+            txtPlayer1Score.text = player1Score.ToString();
+            txtPlayer2Score.text = player2Score.ToString();
+
+            Time.timeScale = 0;
+        }
     }
 
     // Update is called once per frame
@@ -99,10 +106,7 @@ public class GameManager : MonoBehaviour
             player1Score +=point;
             txtPlayer1Score.text =  player1Score.ToString();
         }
-
-
     }
-
 
     public void ActivateParticleEfffects( ParticleSystem particleSystem)
     {
@@ -128,7 +132,6 @@ public class GameManager : MonoBehaviour
     public void PlayerTakeExtraShieldSkill()
     {
         player[index].skillType = Skill.ExtraShield;
-        index++;
         AudioManager.audioManagerInstance.PlayOneShot("MouseClick");
         player1SkillSelectPanel.gameObject.SetActive(false);
     }
@@ -140,9 +143,9 @@ public class GameManager : MonoBehaviour
         inSkillSelection = false;
     }
 
-
     public IEnumerator GameEnded()
     {
+        
         Time.timeScale = 0.01f;
         Time.fixedDeltaTime *= Time.timeScale; 
         yield return new WaitForSecondsRealtime(2f);
@@ -198,4 +201,5 @@ public class GameManager : MonoBehaviour
             instance.player[1].shieldOn = false;
         }
     }
+
 }

@@ -25,6 +25,7 @@ public class Goal : MonoBehaviour
             GameManager.instance.Score(this.gameObject.tag);
             if (GameManager.instance.player1Score >= GameManager.instance.targetScore || GameManager.instance.player2Score >= GameManager.instance.targetScore)
             {
+                GameManager.instance.ActivateParticleEfffects(collision.GetComponent<ParticleSystem>());
                 StartCoroutine(GameManager.instance.GameEnded());
             }
             else
