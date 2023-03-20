@@ -26,11 +26,10 @@ public class BallPhysics : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Skill collisionGameObjectSkillType = Skill.ExtraPoint;
+        SkillManager player = collision.gameObject.GetComponent<SkillManager>();
         AudioManager.audioManagerInstance.PlayOneShot("Hit");
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Player2"))
         {
-            collisionGameObjectSkillType = collision.gameObject.GetComponent<SkillManager>().skillType;
             vel.x = rb.velocity.x;
             vel.y = (rb.velocity.y / 2) + (collision.collider.attachedRigidbody.velocity.y / 3); //mengambil nilai velocity player
             while (Mathf.Abs(vel.x) < 10f)
@@ -40,27 +39,15 @@ public class BallPhysics : MonoBehaviour
             rb.velocity = vel;
         }
 
-        if (collision.gameObject.CompareTag("Player") && collisionGameObjectSkillType == Skill.ExtraShield)
+        if (player == null)
         {
-            collision.gameObject.GetComponent<SkillManager>().SetExtraShieldPercentage(collision.gameObject.GetComponent<SkillManager>());
+            GameManager.instance.CheckShieldStatus(collision);
+            trailRenderer.emitting = true;
+            StartCoroutine(DisableTrailRendererEmitter(.5f));
         }
-
-        if (collision.gameObject.CompareTag("Player2") && collisionGameObjectSkillType == Skill.ExtraShield)
-        {
-            collision.gameObject.GetComponent<SkillManager>().SetExtraShieldPercentage(collision.gameObject.GetComponent<SkillManager>());
-        }
-
-        if (collision.gameObject.CompareTag("Player1 Goal") && GameManager.instance.player[0].shieldOn == true)
-        {
-            GameManager.instance.player[0].shieldOn = false;
-        }
-
-        if (collision.gameObject.CompareTag("Player2 Goal") && GameManager.instance.player[1].shieldOn == true)
-        {
-            GameManager.instance.player[1].shieldOn = false;
-        }
-        trailRenderer.emitting = true;
-        StartCoroutine(DisableTrailRendererEmitter(.5f));
+        else  
+            player.SetExtraShieldPercentage(player);
+       
     }
 
     void GoBall()

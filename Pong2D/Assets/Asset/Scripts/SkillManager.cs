@@ -98,9 +98,21 @@ public class SkillManager : MonoBehaviour
 
     public void SetExtraShieldPercentage(SkillManager player)
     {
-        player.chance = Random.Range(20f, 30.1f);
-        player.playerSpecialPercentage += player.chance;
-        player.txtPlayerSpecialSkillPercentage.text = string.Format("{0:0.00}",player.playerSpecialPercentage)+"%";
+        var collision = player.GetComponent<Collider2D>();
+        if (collision.gameObject.CompareTag("Player") && player.skillType == Skill.ExtraShield)
+        {
+            player.chance = Random.Range(20f, 30.1f);
+            player.playerSpecialPercentage += player.chance;
+            player.txtPlayerSpecialSkillPercentage.text = string.Format("{0:0.00}", player.playerSpecialPercentage) + "%";
+        }
+
+        if (collision.gameObject.CompareTag("Player2") && player.skillType == Skill.ExtraShield)
+        {
+            player.chance = Random.Range(20f, 30.1f);
+            player.playerSpecialPercentage += player.chance;
+            player.txtPlayerSpecialSkillPercentage.text = string.Format("{0:0.00}", player.playerSpecialPercentage) + "%";
+        }
+
     }
 
     private void ChangeColorNormal(GameObject obj)

@@ -37,7 +37,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -98,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void ActivateParticleEfffects( ParticleSystem particleSystem)
     {
-        if(particleSystem != null)
+        if (particleSystem != null)
             particleSystem.Play();
     }
 
@@ -176,5 +184,18 @@ public class GameManager : MonoBehaviour
 
         //Player 1 score with extra point
         player[0].ExtraPoint();
+    }
+
+    public void CheckShieldStatus(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player1 Goal") && instance.player[0].shieldOn == true)
+        {
+            instance.player[0].shieldOn = false;
+        }
+
+        if (collision.gameObject.CompareTag("Player2 Goal") && instance.player[1].shieldOn == true)
+        {
+            instance.player[1].shieldOn = false;
+        }
     }
 }
