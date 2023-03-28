@@ -565,6 +565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36210210ccf4dd8448ce2fd9b0ad0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introPanel: {fileID: 0}
+  descPanel: []
+  introButtons: []
 --- !u!1 &183979689
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +729,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36210210ccf4dd8448ce2fd9b0ad0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introPanel: {fileID: 0}
+  descPanel: []
+  introButtons: []
 --- !u!1 &194848601
 GameObject:
   m_ObjectHideFlags: 0
@@ -5705,7 +5711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6787506319760110471, guid: d2c0dec6fbabfcd4594429ef866afee7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6787506319760110585, guid: d2c0dec6fbabfcd4594429ef866afee7, type: 3}
       propertyPath: m_RootOrder
@@ -6082,6 +6088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36210210ccf4dd8448ce2fd9b0ad0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introPanel: {fileID: 0}
+  descPanel: []
+  introButtons: []
 --- !u!1 &409721320
 GameObject:
   m_ObjectHideFlags: 0
@@ -6255,6 +6264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36210210ccf4dd8448ce2fd9b0ad0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introPanel: {fileID: 0}
+  descPanel: []
+  introButtons: []
 --- !u!1 &426603217
 GameObject:
   m_ObjectHideFlags: 0
@@ -6630,6 +6642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36210210ccf4dd8448ce2fd9b0ad0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introPanel: {fileID: 0}
+  descPanel: []
+  introButtons: []
 --- !u!1 &503182864
 GameObject:
   m_ObjectHideFlags: 0
@@ -6693,7 +6708,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 0, b: 0.2784314, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -6753,7 +6768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.2784314, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6803,6 +6818,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36210210ccf4dd8448ce2fd9b0ad0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introPanel: {fileID: 0}
+  descPanel: []
+  introButtons: []
 --- !u!1 &582034913
 GameObject:
   m_ObjectHideFlags: 0
@@ -6817,7 +6835,7 @@ GameObject:
   - component: {fileID: 582034920}
   - component: {fileID: 582034917}
   - component: {fileID: 582034918}
-  - component: {fileID: 582034919}
+  - component: {fileID: 582034921}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -6927,6 +6945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 241261518}
+  trailRenderer: {fileID: 0}
 --- !u!58 &582034918
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6943,7 +6962,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.00000029802322}
   serializedVersion: 2
   m_Radius: 2.1
---- !u!96 &582034919
+--- !u!114 &582034920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582034913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee545a95b6c2d345b8fd0f83790dd55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!96 &582034921
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -6964,7 +6995,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7024,7 +7055,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.9375801, b: 0.5019608, a: 1}
+      key0: {r: 1, g: 0.6509804, b: 0, a: 1}
       key1: {r: 0.23529413, g: 0.23529413, b: 0.23529413, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -7060,18 +7091,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.4
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &582034920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582034913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee545a95b6c2d345b8fd0f83790dd55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &609695093
 GameObject:
   m_ObjectHideFlags: 0
@@ -13228,6 +13247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36210210ccf4dd8448ce2fd9b0ad0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introPanel: {fileID: 0}
+  descPanel: []
+  introButtons: []
 --- !u!114 &890583558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13670,6 +13692,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36210210ccf4dd8448ce2fd9b0ad0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introPanel: {fileID: 0}
+  descPanel: []
+  introButtons: []
 --- !u!114 &929780090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14517,6 +14542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36210210ccf4dd8448ce2fd9b0ad0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introPanel: {fileID: 0}
+  descPanel: []
+  introButtons: []
 --- !u!1 &1201225668
 GameObject:
   m_ObjectHideFlags: 0
@@ -15654,6 +15682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36210210ccf4dd8448ce2fd9b0ad0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introPanel: {fileID: 0}
+  descPanel: []
+  introButtons: []
 --- !u!1 &1777151700
 GameObject:
   m_ObjectHideFlags: 0
@@ -15713,6 +15744,9 @@ GameObject:
   - component: {fileID: 1818408401}
   - component: {fileID: 1818408399}
   - component: {fileID: 1818408400}
+  - component: {fileID: 1818408404}
+  - component: {fileID: 1818408403}
+  - component: {fileID: 1818408402}
   m_Layer: 9
   m_Name: Right Racket
   m_TagString: Player2
@@ -15862,10 +15896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7d89504bd73ff47abaace2bf043cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  boundY: 4
-  playerParticleSystem: {fileID: 0}
-  skillType: 0
 --- !u!114 &1818408401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15884,6 +15914,46 @@ MonoBehaviour:
   playerGoal: {fileID: 726959251}
   txtPlayerSpecialSkillPercentage: {fileID: 767230430}
   shieldOn: 0
+--- !u!114 &1818408402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818408394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefff11e0a388574897d0abf7c3b9183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundY: 4
+--- !u!114 &1818408403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818408394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b0d361a682f8e4d9eb579c22b6389e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upKey: 273
+  downKey: 274
+  moveSpeed: 10
+--- !u!114 &1818408404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818408394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3556243265c6df6448c890d1d2fa9083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1877686539
 GameObject:
   m_ObjectHideFlags: 0
@@ -21085,6 +21155,9 @@ GameObject:
   - component: {fileID: 1984699575}
   - component: {fileID: 1984699577}
   - component: {fileID: 1984699576}
+  - component: {fileID: 1984699580}
+  - component: {fileID: 1984699579}
+  - component: {fileID: 1984699578}
   m_Layer: 3
   m_Name: Left Racket
   m_TagString: Player
@@ -21220,10 +21293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7d89504bd73ff47abaace2bf043cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  boundY: 4
-  playerParticleSystem: {fileID: 0}
-  skillType: 0
 --- !u!114 &1984699577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21242,6 +21311,46 @@ MonoBehaviour:
   playerGoal: {fileID: 14754357}
   txtPlayerSpecialSkillPercentage: {fileID: 801453007}
   shieldOn: 0
+--- !u!114 &1984699578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984699571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefff11e0a388574897d0abf7c3b9183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundY: 4
+--- !u!114 &1984699579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984699571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b0d361a682f8e4d9eb579c22b6389e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upKey: 119
+  downKey: 115
+  moveSpeed: 10
+--- !u!114 &1984699580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984699571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3556243265c6df6448c890d1d2fa9083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2043943686
 GameObject:
   m_ObjectHideFlags: 0

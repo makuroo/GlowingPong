@@ -35,8 +35,11 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        //bgmSlider.value = PlayerPrefs.GetFloat("bgmVolume", 1f);
-        //sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume", 1f);
+        if(bgmSlider!=null && sfxSlider!= null)
+        {
+            bgmSlider.value = PlayerPrefs.GetFloat("bgmVolume", 1f);
+            sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume", 1f);
+        }
 
         Play("BackgroundMusic");
     }
@@ -62,36 +65,33 @@ public class AudioManager : MonoBehaviour
         s.source.PlayOneShot(s.clip);
     }
 
-    
+    public void SetBGMVolume()
+    {
+        foreach (Sound s in sounds)
+        {
+            if (s.audioType == Sound.TypeAudio.BGM)
+            {
+                s.volume = bgmSlider.value;
+                PlayerPrefs.SetFloat("bgmVolume", bgmSlider.value);
+            }
 
-    //public void SetBGMVolume()
-    //{
-    //    foreach (Sound s in sounds)
-    //    {
-    //        if (s.audioType == Sound.TypeAudio.BGM )
-    //        {
-    //            s.volume = bgmSlider.value;
-    //            PlayerPrefs.SetFloat("bgmVolume", bgmSlider.value);
-    //        }
+            PlayerPrefs.Save();
+            s.source.volume = s.volume;
+        }
+    }
 
-    //        PlayerPrefs.Save();
-    //        s.source.volume = s.volume;
-    //    }
-    //}
+    public void SetSFXVolume()
+    {
+        foreach (Sound s in sounds)
+        {
+            if (s.audioType == Sound.TypeAudio.SFX)
+            {
+                s.volume = sfxSlider.value;
+                PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value);
+            }
 
-
-    //public void SetSFXVolume()
-    //{
-    //    foreach (Sound s in sounds)
-    //    {
-    //        if (s.audioType == Sound.TypeAudio.SFX)
-    //        {
-    //            s.volume = sfxSlider.value;
-    //            PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value);
-    //        }
-
-    //        PlayerPrefs.Save();
-    //        s.source.volume = s.volume;
-    //    }
-    //}
+            PlayerPrefs.Save();
+            s.source.volume = s.volume;
+        }
+    }
 }

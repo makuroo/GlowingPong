@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas skillSelectionCanvas;
     [SerializeField] private GameObject player1SkillSelectPanel;
     private bool inSkillSelection = true;
-    private int index;
+    private bool isGameOver = false;
+    private int index = 0;
     
     [Space(3)]
     [Header("Skill")]
@@ -48,11 +49,11 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
     void Start()
     {
+
         if(SceneManager.GetActiveScene().buildIndex == 1)
         {
             player1Score = 0;
@@ -68,16 +69,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && inSkillSelection == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && inSkillSelection == false && isGameOver == false)
         {
             if(pauseCanvas.gameObject.activeSelf == false)
             {
+                if (Cursor.visible == false)
+                    Cursor.visible = true; 
                 pauseCanvas.gameObject.SetActive(true);
                 Time.timeScale = 0;
             }
 
             else
             {
+                if (Cursor.visible == true)
+                    Cursor.visible = false;
                 pauseCanvas.gameObject.SetActive(false);
                 Time.timeScale = 1;
             }
@@ -123,6 +128,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerTakeExtraPointSkill()
     {
+        Debug.Log(index + " " + player[index].skillType);
         player[index].skillType = Skill.ExtraPoint;
         index++;
         AudioManager.audioManagerInstance.PlayOneShot("MouseClick");
@@ -132,6 +138,8 @@ public class GameManager : MonoBehaviour
     public void PlayerTakeExtraShieldSkill()
     {
         player[index].skillType = Skill.ExtraShield;
+        Debug.Log(index + " " + player[index].skillType);
+        index++;
         AudioManager.audioManagerInstance.PlayOneShot("MouseClick");
         player1SkillSelectPanel.gameObject.SetActive(false);
     }
@@ -141,17 +149,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         skillSelectionCanvas.gameObject.SetActive(false);
         inSkillSelection = false;
+        Cursor.visible = false;
     }
 
     public IEnumerator GameEnded()
     {
-        
+        isGameOver = true;
         Time.timeScale = 0.01f;
         Time.fixedDeltaTime *= Time.timeScale; 
         yield return new WaitForSecondsRealtime(2f);
         Time.fixedDeltaTime = 0.02f;
         Time.timeScale = 0;
         gameOverCanvas.gameObject.SetActive(true);
+        Cursor.visible = true;
     }
 
 

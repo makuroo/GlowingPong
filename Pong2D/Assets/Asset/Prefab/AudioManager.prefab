@@ -70,7 +70,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: MouseClick
-    clip: {fileID: 8300000, guid: 01f5f76573b033a4c9ba74f066eb0030, type: 3}
+    clip: {fileID: 8300000, guid: ffd8448c7693fa045bc691861a284104, type: 3}
     audioType: 1
     volume: 1
     pitch: 1

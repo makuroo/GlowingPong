@@ -137,6 +137,4 @@ public class SkillManager : MonoBehaviour
             obj.GetComponent<SpriteRenderer>().color = new Color32(255, 132, 0, 255);
         }
     }
-
-
 }

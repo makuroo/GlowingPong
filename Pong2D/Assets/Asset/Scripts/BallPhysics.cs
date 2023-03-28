@@ -9,7 +9,7 @@ public class BallPhysics : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 vel;
     private float ballForceX = 20, ballForceY = 15;
-    private TrailRenderer trailRenderer;
+    [SerializeField] private TrailRenderer trailRenderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +55,6 @@ public class BallPhysics : MonoBehaviour
         float rand = Random.Range(0, 2); //akan random nilai diantara 0-1
         ballForceX = Random.Range(80, 90);
         ballForceY = Random.Range(-15, 15.1f);
-        //Debug.Log(ballForceX + " " + ballForceY);
 
         if (rand < 1)
         {

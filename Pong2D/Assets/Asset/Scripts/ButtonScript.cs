@@ -7,8 +7,10 @@ using UnityEngine.EventSystems;
 public class ButtonScript : MonoBehaviour
 {
     [SerializeField] private GameObject introPanel;
-    [SerializeField] private List<GameObject> text = new List<GameObject>();
+    [SerializeField] private List<GameObject> descPanel = new List<GameObject>();
     [SerializeField] private List<Button> introButtons = new List<Button>();
+
+    public static int panelIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,19 +45,53 @@ public class ButtonScript : MonoBehaviour
         introPanel.SetActive(false);
     }
 
-    public void Next()
+    public void SetActivePanelNext()
     {
-        text[0].SetActive(false);
-        text[1].SetActive(true);
-        introButtons[1].gameObject.SetActive(true);
-        introButtons[0].gameObject.SetActive(false);
+        panelIndex++;
+
+        descPanel[panelIndex].SetActive(true);
+
+        if(panelIndex == descPanel.Count - 1)
+        {
+            introButtons[0].gameObject.SetActive(false);
+        }
+        else
+        {
+            introButtons[0].gameObject.SetActive(true);
+            introButtons[1].gameObject.SetActive(true);
+        }
+
+        for(int i =0; i<descPanel.Count; i++)
+        {
+            if (i != panelIndex)
+            {
+                descPanel[i].SetActive(false);
+            }
+        }
     }
 
-    public void Prev()
+    public void SetActivePanelPrev()
     {
-        text[1].SetActive(false);
-        text[0].SetActive(true);
-        introButtons[0].gameObject.SetActive(true);
-        introButtons[1].gameObject.SetActive(false);
+        panelIndex--;
+
+        descPanel[panelIndex].SetActive(true);
+
+        if (panelIndex == 0)
+        {
+            introButtons[1].gameObject.SetActive(false);
+        }
+        else
+        {
+            introButtons[0].gameObject.SetActive(true);
+            introButtons[1].gameObject.SetActive(true);
+        }
+
+        for (int i = 0; i < descPanel.Count; i++)
+        {
+            if (i != panelIndex)
+            {
+                descPanel[i].SetActive(false);
+            }
+        }
     }
 }

@@ -16,6 +16,4 @@ public class BallParticleEffects : MonoBehaviour
     {
         GameManager.instance.ActivateParticleEfffects(particleSystems);
     }
-     
-    
 }
