@@ -20,7 +20,6 @@ public class Goal : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-
             collision.transform.GetComponent<TrailRenderer>().enabled = false;
             GameManager.instance.Score(this.gameObject.tag);
             if (GameManager.instance.player1Score >= GameManager.instance.targetScore || GameManager.instance.player2Score >= GameManager.instance.targetScore)
